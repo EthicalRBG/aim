@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Net::TOC::Client</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Net::TOC::Client</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/aim/net_toc_rb.html">
+                lib/aim/net_toc.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A high-level interface to <a href="../TOC.html">TOC</a>. It supports
+asynchronous message handling through the use of threads, and maintains a
+list of buddies.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000027">capabilities</a>&nbsp;&nbsp;
+      <a href="#M000024">come_back</a>&nbsp;&nbsp;
+      <a href="#M000013">connect</a>&nbsp;&nbsp;
+      <a href="#M000014">disconnect</a>&nbsp;&nbsp;
+      <a href="#M000023">go_away</a>&nbsp;&nbsp;
+      <a href="#M000025">idle_time=</a>&nbsp;&nbsp;
+      <a href="#M000019">join_chat</a>&nbsp;&nbsp;
+      <a href="#M000017">keep_track_of_rooms_joined</a>&nbsp;&nbsp;
+      <a href="#M000018">keeping_track_of_rooms_joined?</a>&nbsp;&nbsp;
+      <a href="#M000015">listen</a>&nbsp;&nbsp;
+      <a href="#M000012">new</a>&nbsp;&nbsp;
+      <a href="#M000021">on_chat</a>&nbsp;&nbsp;
+      <a href="#M000022">on_error</a>&nbsp;&nbsp;
+      <a href="#M000016">on_im</a>&nbsp;&nbsp;
+      <a href="#M000020">send_chat</a>&nbsp;&nbsp;
+      <a href="#M000026">wait</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="../TOC.html">TOC</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">buddy_list</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">screen_name</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(screen_name, password) {|message, buddy, auto_response, client| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+You must initialize the client with your screen name and password. If a
+block is given, <a href="Client.html#M000015">Client#listen</a> will be
+invoked with the block after initialization.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 433</span>
+433:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">screen_name</span>, <span class="ruby-identifier">password</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">optional_block</span>) <span class="ruby-comment cmt"># :yields: message, buddy, auto_response, client</span>
+434:         <span class="ruby-ivar">@conn</span> = <span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">screen_name</span>)
+435:         <span class="ruby-ivar">@screen_name</span> = <span class="ruby-identifier">format_screen_name</span>(<span class="ruby-identifier">screen_name</span>)
+436:         <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
+437:         <span class="ruby-ivar">@callbacks</span> = {}
+438:         <span class="ruby-ivar">@buddy_list</span> = <span class="ruby-constant">BuddyList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@conn</span>)
+439:         <span class="ruby-identifier">add_callback</span>(<span class="ruby-identifier">:config</span>, <span class="ruby-identifier">:config2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@buddy_list</span>.<span class="ruby-identifier">decode_toc</span> <span class="ruby-identifier">v</span> }
+440:         <span class="ruby-identifier">add_callback</span>(<span class="ruby-identifier">:update_buddy</span>, <span class="ruby-identifier">:update_buddy2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">update_buddy</span> <span class="ruby-identifier">v</span> }
+441:         <span class="ruby-identifier">on_error</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">error</span> <span class="ruby-operator">|</span>
+442:           <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Error: #{error}&quot;</span>
+443:         <span class="ruby-keyword kw">end</span>
+444:         <span class="ruby-identifier">listen</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">optional_block</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+445:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="#M000027" class="method-signature">
+          <span class="method-name">capabilities</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a list of this client&#8216;s <a
+href="Client.html#M000027">capabilities</a>. Not yet implemented.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000027-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000027-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 585</span>
+585:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">capabilities</span>
+586:         [] <span class="ruby-comment cmt"># TODO</span>
+587:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">come_back</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets your status to available.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 561</span>
+561:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">come_back</span>
+562:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_set_away</span>
+563:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="#M000013" class="method-signature">
+          <span class="method-name">connect</span><span class="method-args">(server=&quot;toc.oscar.aol.com&quot;, port=9898, oscar_server=&quot;login.oscar.aol.com&quot;, oscar_port=5190)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Connects to the server and starts an event-handling thread.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 448</span>
+448:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect</span>(<span class="ruby-identifier">server</span>=<span class="ruby-value str">&quot;toc.oscar.aol.com&quot;</span>, <span class="ruby-identifier">port</span>=<span class="ruby-value">9898</span>, <span class="ruby-identifier">oscar_server</span>=<span class="ruby-value str">&quot;login.oscar.aol.com&quot;</span>, <span class="ruby-identifier">oscar_port</span>=<span class="ruby-value">5190</span>)
+449:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">server</span>, <span class="ruby-identifier">port</span>)
+450:         <span class="ruby-identifier">code</span> = <span class="ruby-value">7696</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@screen_name</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">*</span> <span class="ruby-ivar">@password</span>[<span class="ruby-value">0</span>]
+451:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc2_signon</span>(<span class="ruby-identifier">oscar_server</span>, <span class="ruby-identifier">oscar_port</span>, <span class="ruby-ivar">@screen_name</span>, <span class="ruby-identifier">roasted_pass</span>, <span class="ruby-value str">&quot;english&quot;</span>, <span class="ruby-value str">&quot;\&quot;TIC:toc.rb\&quot;&quot;</span>, <span class="ruby-value">160</span>, <span class="ruby-identifier">code</span>)
+452: 
+453:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">recv</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+454:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:sign_on</span>
+455:             <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_add_buddy</span>(<span class="ruby-ivar">@screen_name</span>)
+456:             <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_init_done</span>
+457:             <span class="ruby-identifier">capabilities</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">capability</span><span class="ruby-operator">|</span>
+458:               <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_set_caps</span>(<span class="ruby-identifier">capability</span>)
+459:             <span class="ruby-keyword kw">end</span>
+460:           <span class="ruby-keyword kw">end</span>
+461:         <span class="ruby-keyword kw">end</span>
+462:         <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">kill</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment cmt"># ha</span>
+463:         <span class="ruby-ivar">@thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> { <span class="ruby-identifier">loop</span> { <span class="ruby-identifier">event_loop</span> } }
+464:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="#M000014" class="method-signature">
+          <span class="method-name">disconnect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Disconnects and kills the event-handling thread. You may still add
+callbacks while disconnected.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 467</span>
+467:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">disconnect</span>
+468:         <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">kill</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">nil?</span>
+469:         <span class="ruby-ivar">@thread</span> = <span class="ruby-keyword kw">nil</span>
+470:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">close</span>
+471:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">go_away</span><span class="method-args">(away_message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets your status to away and <tt>away_message</tt> as your away message.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 556</span>
+556:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">go_away</span>(<span class="ruby-identifier">away_message</span>)
+557:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_set_away</span> <span class="ruby-node">&quot;\&quot;#{away_message.gsub(&quot;\&quot;&quot;,&quot;\\\&quot;&quot;)}\&quot;&quot;</span>
+558:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="#M000025" class="method-signature">
+          <span class="method-name">idle_time=</span><span class="method-args">(seconds)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets your idle time in seconds. You only need to set this once; afterwards,
+the server will keep track itself. Set to 0 to stop being idle.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000025-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 567</span>
+567:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">idle_time=</span>(<span class="ruby-identifier">seconds</span>)
+568:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_set_idle</span> <span class="ruby-identifier">seconds</span>
+569:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="#M000019" class="method-signature">
+          <span class="method-name">join_chat</span><span class="method-args">(room_name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+remi
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000019-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 512</span>
+512:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">join_chat</span> <span class="ruby-identifier">room_name</span>
+513:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_chat_join</span> <span class="ruby-value">4</span>, <span class="ruby-identifier">room_name</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">room_name</span>
+514:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="#M000017" class="method-signature">
+          <span class="method-name">keep_track_of_rooms_joined</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+remi
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000017-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 496</span>
+496:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keep_track_of_rooms_joined</span>
+497:         <span class="ruby-ivar">@keeping_track_of_rooms_joined</span> = <span class="ruby-keyword kw">true</span>
+498:         <span class="ruby-identifier">add_callback</span>(<span class="ruby-identifier">:chat_join</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+499:           <span class="ruby-identifier">room_id</span>, <span class="ruby-identifier">room_name</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+500:           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;joined chat room #{ room_name } [#{ room_id }]&quot;</span>
+501:           <span class="ruby-ivar">@rooms</span> <span class="ruby-operator">||=</span> { }
+502:           <span class="ruby-ivar">@rooms</span>[<span class="ruby-identifier">room_id</span>] = <span class="ruby-identifier">room_name</span> <span class="ruby-comment cmt"># not an object for now, just strings!</span>
+503:         <span class="ruby-keyword kw">end</span>
+504:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="#M000018" class="method-signature">
+          <span class="method-name">keeping_track_of_rooms_joined?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000018-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 505</span>
+505:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keeping_track_of_rooms_joined?</span>
+506:         <span class="ruby-ivar">@keeping_track_of_rooms_joined</span>
+507:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="#M000015" class="method-signature">
+          <span class="method-name">listen</span><span class="method-args">(*args) {|message, buddy, auto_response, client| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Connects to the server and forwards received IMs to the given block. See <a
+href="Client.html#M000013">Client#connect</a> for the arguments.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 474</span>
+474:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">listen</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>) <span class="ruby-comment cmt"># :yields: message, buddy, auto_response, client</span>
+475:         <span class="ruby-identifier">on_im</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">message</span>, <span class="ruby-identifier">buddy</span>, <span class="ruby-identifier">auto_response</span> <span class="ruby-operator">|</span>
+476:           <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">message</span>, <span class="ruby-identifier">buddy</span>, <span class="ruby-identifier">auto_response</span>, <span class="ruby-keyword kw">self</span>
+477:         <span class="ruby-keyword kw">end</span>
+478:         <span class="ruby-identifier">connect</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+479:         <span class="ruby-identifier">wait</span>
+480:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="#M000021" class="method-signature">
+          <span class="method-name">on_chat</span><span class="method-args">() {|message, buddy, room, auto_response| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+remi Pass a block to be called every time an IM is received. This will
+replace any previous <a href="Client.html#M000016">on_im</a> handler.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 527</span>
+527:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_chat</span>
+528:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentException</span>, <span class="ruby-value str">&quot;on_chat requires a block argument&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+529:         <span class="ruby-identifier">keep_track_of_rooms_joined</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keeping_track_of_rooms_joined?</span>
+530:         <span class="ruby-identifier">add_callback</span>(<span class="ruby-identifier">:chat_in</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+531:           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;chat_in val =&gt; #{ val.inspect }&quot;</span>
+532:           <span class="ruby-identifier">room_id</span>, <span class="ruby-identifier">screen_name</span>, <span class="ruby-identifier">auto</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">message</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+533:           <span class="ruby-identifier">message</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+534:           <span class="ruby-identifier">message</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/&lt;[^&gt;]+&gt;/</span>,<span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-comment cmt"># get rid of html</span>
+535:           <span class="ruby-identifier">buddy</span> = <span class="ruby-ivar">@buddy_list</span>.<span class="ruby-identifier">buddy_named</span>(<span class="ruby-identifier">screen_name</span>)
+536:           <span class="ruby-identifier">room</span> = <span class="ruby-ivar">@rooms</span>[<span class="ruby-identifier">room_id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">room_id</span>
+537:           <span class="ruby-identifier">auto_response</span> = <span class="ruby-identifier">auto</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;T&quot;</span>
+538:           <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">message</span>, <span class="ruby-identifier">buddy</span>, <span class="ruby-identifier">room</span>, <span class="ruby-identifier">auto_response</span>
+539:         <span class="ruby-keyword kw">end</span>
+540:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="#M000022" class="method-signature">
+          <span class="method-name">on_error</span><span class="method-args">() {|error| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Pass a block to be called every time an error occurs. This will replace any
+previous <a href="Client.html#M000022">on_error</a> handler, including the
+default exception-raising behavior.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 544</span>
+544:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_error</span>
+545:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentException</span>, <span class="ruby-value str">&quot;on_error requires a block argument&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+546:         <span class="ruby-identifier">add_callback</span>(<span class="ruby-identifier">:error</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+547:           <span class="ruby-identifier">code</span>, <span class="ruby-identifier">param</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+548:           <span class="ruby-identifier">error</span> = <span class="ruby-constant">ErrorCode</span>[<span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span>]
+549:           <span class="ruby-identifier">error</span> = <span class="ruby-value str">&quot;An unknown error occurred.&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">error</span>.<span class="ruby-identifier">nil?</span>
+550:           <span class="ruby-identifier">error</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-value str">&quot;&lt;param&gt;&quot;</span>, <span class="ruby-identifier">param</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">param</span>.<span class="ruby-identifier">nil?</span>
+551:           <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">error</span>
+552:         <span class="ruby-keyword kw">end</span>
+553:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="#M000016" class="method-signature">
+          <span class="method-name">on_im</span><span class="method-args">() {|message, buddy, auto_response| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Pass a block to be called every time an IM is received. This will replace
+any previous <a href="Client.html#M000016">on_im</a> handler.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 483</span>
+483:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_im</span>
+484:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentException</span>, <span class="ruby-value str">&quot;on_im requires a block argument&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+485:         <span class="ruby-identifier">add_callback</span>(<span class="ruby-identifier">:im_in</span>, <span class="ruby-identifier">:im_in2</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+486:           <span class="ruby-identifier">screen_name</span>, <span class="ruby-identifier">auto</span>, <span class="ruby-identifier">f2</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">message</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+487:           <span class="ruby-identifier">message</span> = <span class="ruby-identifier">message</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+488:           <span class="ruby-identifier">buddy</span> = <span class="ruby-ivar">@buddy_list</span>.<span class="ruby-identifier">buddy_named</span>(<span class="ruby-identifier">screen_name</span>)
+489:           <span class="ruby-identifier">auto_response</span> = <span class="ruby-identifier">auto</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;T&quot;</span>
+490:           <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">message</span>, <span class="ruby-identifier">buddy</span>, <span class="ruby-identifier">auto_response</span>
+491:         <span class="ruby-keyword kw">end</span>
+492:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="#M000020" class="method-signature">
+          <span class="method-name">send_chat</span><span class="method-args">(room_name, message)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+remi
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 517</span>
+517:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_chat</span> <span class="ruby-identifier">room_name</span>, <span class="ruby-identifier">message</span>
+518:         <span class="ruby-identifier">room</span> = <span class="ruby-ivar">@rooms</span>.<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span>,<span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">room_name</span> } <span class="ruby-comment cmt"># end up with nil or [ '1234', 'the_name' ]</span>
+519:         <span class="ruby-identifier">room_id</span> = <span class="ruby-identifier">room</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">room_name</span>
+520:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;i wanna send #{ message } to room with name #{ room_name } and therefore, id #{ room_id }&quot;</span>
+521:         <span class="ruby-identifier">message</span> = <span class="ruby-value str">&quot;\&quot;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">format_message</span>(<span class="ruby-identifier">message</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\&quot;&quot;</span>
+522:         <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">toc_chat_send</span> <span class="ruby-identifier">room_id</span>, <span class="ruby-identifier">message</span>
+523:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="#M000026" class="method-signature">
+          <span class="method-name">wait</span><span class="method-args">(limit=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Waits for the event-handling thread for <tt>limit</tt> seconds, or
+indefinitely if no argument is given. Use this to prevent your program from
+exiting prematurely. For example, the following script will exit right
+after connecting:
+</p>
+<pre>
+  client = Net::TOC.new(&quot;screenname&quot;, &quot;p455w0rd&quot;)
+  client.connect
+</pre>
+<p>
+To prevent this, use <a href="Client.html#M000026">wait</a>:
+</p>
+<pre>
+  client = Net::TOC.new(&quot;screenname&quot;, &quot;p455w0rd&quot;)
+  client.connect
+  client.wait
+</pre>
+<p>
+Now the program will <a href="Client.html#M000026">wait</a> until the
+client has disconnected before exiting.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000026-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/aim/net_toc.rb, line 580</span>
+580:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait</span>(<span class="ruby-identifier">limit</span>=<span class="ruby-keyword kw">nil</span>)
+581:         <span class="ruby-ivar">@thread</span>.<span class="ruby-identifier">join</span> <span class="ruby-identifier">limit</span>
+582:       <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

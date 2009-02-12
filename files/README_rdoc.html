@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Feb 11 20:53:54 -0700 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1><a href="../classes/AIM.html">AIM</a></h1>
+<p>
+<a href="../classes/AIM.html">AIM</a> attempts to simplify the creation of
+<a href="../classes/AIM.html">AIM</a> bots or do things log log all IMs to
+an <a href="../classes/AIM.html">AIM</a> chat room, etc.
+</p>
+<h2>Install</h2>
+<pre>
+  sudo gem install remi-aim
+</pre>
+<h2>Currently working Usage</h2>
+<pre>
+  require 'rubygems'
+  require 'aim'
+
+  AIM.login_as_user( 'screenname', 'password' ) do
+
+    im_user 'some user to IM', &quot;hello!  the time is #{ Time.now }&quot;
+
+    log_chatroom 'the name of some chat room to log into', :output =&gt; 'file-to-save-chatroom-logs-to'
+
+  end
+</pre>
+<h2>NOTES</h2>
+<p>
+this app makes heavy use of <a href="../classes/Net/TOC.html">Net::TOC</a>,
+which I believe was originally created by Ian Henderson: <a
+href="http://rubyforge.org/users/ianh">rubyforge.org/users/ianh</a>/
+</p>
+<p>
+<a
+href="http://rubyforge.org/projects/net-toc">rubyforge.org/projects/net-toc</a>/
+is released under the BSD License: <a
+href="http://www.debian.org/misc/bsd.license">www.debian.org/misc/bsd.license</a>
+</p>
+<p>
+I am mentioning the name of the author to give him credit.
+</p>
+<p>
+Per the BSD License, I will NOT use the author&#8216;s name to endorse or
+promote this product!
+</p>
+<h2>TODO</h2>
+<ol>
+<li>get a purty DSL working (using net/toc in the background)
+
+</li>
+<li>refactor net/toc &#8212;&gt; <a href="../classes/AIM.html">AIM</a>
+
+</li>
+</ol>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
