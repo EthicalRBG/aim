@@ -8,7 +8,7 @@ AIM attempts to simplify the creation of AIM bots or do things log log all IMs t
 
 ## Currently working Usage
 
-```
+```ruby
 require 'rubygems'
 require 'aim'
 
