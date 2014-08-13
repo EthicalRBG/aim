@@ -2,10 +2,6 @@
 
 AIM attempts to simplify the creation of AIM bots or do things log log all IMs to an AIM chat room, etc.
 
-## Install
-
-  sudo gem install remi-aim
-
 ## Currently working Usage
 
 ```ruby
